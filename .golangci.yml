@@ -1,0 +1,49 @@
+run:
+  concurrency: 4
+  timeout: 2m
+  issues-exit-code: 5
+  modules-download-mode: readonly
+  go: '1.23'
+
+output:
+  formats:
+    - format: line-number
+      path: stderr
+  show-stats: true
+  print-issued-lines: false
+  print-linter-name: false
+  uniq-by-line: false
+  sort-results: true
+  sort-order:
+    - file
+    - severity
+    - linter
+
+linters-settings:
+  godox:
+    keywords:
+      - FIXME
+      - TODO
+  gofmt:
+    rewrite-rules:
+      - pattern: 'interface{}'
+        replacement: 'any'
+  lll:
+    line-length: 140
+  misspell:
+    locale: US
+
+linters:
+  enable-all: true
+  disable:
+    - execinquery
+    - gomnd
+
+issues:
+  max-issues-per-linter: 5
+  exclude-rules:
+    - path: (.+)_test\.go
+      linters:
+        - dupl
+        - mnd
+        - lll

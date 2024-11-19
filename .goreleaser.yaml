@@ -1,0 +1,24 @@
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+    - go fmt ./...
+#    - golangci-lint run -c .golangci.yml --fix
+    - gofmt -s -r 'interface{} -> any' -w .
+    - goimports -w .
+    - gofumpt -w .
+
+builds:
+  - skip: true
+
+changelog:
+  sort: asc
+
+env_files:
+  github_token: .env
+
+release:
+  github:
+    owner: bitsnap
+    name: go-util

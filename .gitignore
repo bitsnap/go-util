@@ -1,0 +1,27 @@
+# Editors
+.vscode/**
+.vscode
+.idea/**
+.idea
+
+# Golang 
+
+vendor/
+build/
+bin/
+dist/
+
+# Coverage
+coverage/
+
+# Misc
+.DS_Store
+*.pem
+*.log
+
+# Misc / Env
+.env
+.env.*
+
+# Codegen
+.cache/
